@@ -1,0 +1,45 @@
+Net:
+  cross_validation: 5
+  batch_size: 256
+  patience: 50
+  epochs: 1000
+  types: 0 # 0: CNN, 1: LSTM, 2： GRU
+
+# conv1d_i: [cnn filters, cnn kernel_size, max pooling kernel_size, dropout rate]
+# i: The layer of the current convolution in the network
+
+# dense_i: [dense units, dropout rate]
+# i: The current fully connected layer in the network
+
+Cnn:
+  conv1d:
+    - conv1d_1: [128, 1, 0, 0.7, 0]
+    - conv1d_2: [128, 3, 0, 0.7, 0]
+    - conv1d_3: [128, 9, 2, 0.7, 0]
+    - conv1d_4: [128, 10, 2, 0.7, 1]
+  dense:
+    - dense_1: [8, 0.3]
+
+
+# rnn_i: [rnn units, dropout rate]
+# i: The layer of the recurrent neural network in the network
+
+# dense_i: [dense units, dropout rate]
+# i: The current fully connected layer in the network
+Rnn:
+  bidirectional: False
+
+  rnn:
+    - rnn_1: [64, 0.3]
+    - rnn_2: [32, 0.3]
+
+  dense:
+    - dense_1: [128, 0]
+    - dense_2: [64, 0]
+    - dense_2: [16, 0]
+
+Default model:
+  is_available: True # Default: False
+  types: 4 # 0: CNN, 1: RSCNN, 2: BiLSTM, 3: BiGRU, 4: HDeepSPred; Default: 4
+
+
